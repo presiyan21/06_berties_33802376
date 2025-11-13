@@ -69,3 +69,10 @@ Start the application by running:
 ```bash
 node index.js
 ```
+
+### 5. Open your browser
+
+Visit the following URL to view the app:
+
+[http://localhost:8000](http://localhost:8000)
+
