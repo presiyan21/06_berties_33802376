@@ -41,7 +41,9 @@ Users can view all books, search for titles, add new books, and see bargain book
 npm install
 
 ### 2. Set up MySQL
+
 Open MySQL and create the database using the provided SQL scripts:
+
 ```sql
 SOURCE create_db.sql;
 SOURCE insert_test_data.sql;
