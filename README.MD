@@ -49,4 +49,15 @@ Open MySQL and create the database using the provided SQL scripts:
 SOURCE create_db.sql;
 SOURCE insert_test_data.sql;
 ```
+### 3. Configure database connection
 
+Ensure the database connection in `index.js` matches your MySQL credentials:
+
+```js
+const db = mysql.createPool({
+  host: 'localhost',
+  user: 'berties_books_app',
+  password: 'qwertyuiop',
+  database: 'berties_books'
+});
+```
