@@ -34,3 +34,9 @@ Users can view all books, search for titles, add new books, and see bargain book
    ```bash
    git clone https://github.com/lewfer/gs-dwa-berties-books-initial-code berties-books
    cd berties-books
+## Installation and Setup
+
+### 1. Install dependencies
+```bash
+npm install
+
