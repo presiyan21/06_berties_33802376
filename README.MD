@@ -39,6 +39,7 @@ Users can view all books, search for titles, add new books, and see bargain book
 ### 1. Install dependencies
 ```bash
 npm install
+```
 
 ### 2. Set up MySQL
 
