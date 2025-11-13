@@ -48,5 +48,5 @@ Open MySQL and create the database using the provided SQL scripts:
 ```sql
 SOURCE create_db.sql;
 SOURCE insert_test_data.sql;
-
+```
 
