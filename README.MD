@@ -61,3 +61,11 @@ const db = mysql.createPool({
   database: 'berties_books'
 });
 ```
+
+### 4. Run the server
+
+Start the application by running:
+
+```bash
+node index.js
+```
