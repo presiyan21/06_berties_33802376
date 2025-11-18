@@ -35,8 +35,7 @@ Users can view all books, search for titles, add new books, and see bargain book
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/lewfer/gs-dwa-berties-books-initial-code berties-books
-   cd berties-books
+   git clone https://github.com/presiyan21/06_berties_33802376
 ## Installation and Setup
 
 ### 2. Install dependencies
