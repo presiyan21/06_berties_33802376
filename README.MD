@@ -39,33 +39,33 @@ Users can view all books, search for titles, add new books, and see bargain book
    cd berties-books
 ## Installation and Setup
 
-### 1. Install dependencies
+### 2. Install dependencies
 ```bash
 npm install
 ```
 
-### 2. Set up MySQL
+### 3. Set up Database and Test Data
 
-Open MySQL and create the database using the provided SQL scripts:
+Open your MySQL client and create the database, including the user and book data, and the final marking user:
 
 ```sql
 SOURCE create_db.sql;
 SOURCE insert_test_data.sql;
 ```
-### 3. Configure database connection
+### 4. Configure database connection
 
-Ensure the database connection in `index.js` matches your MySQL credentials:
+Create a file named .env and add the following content:
 
 ```js
-const db = mysql.createPool({
-  host: 'localhost',
-  user: 'berties_books_app',
-  password: 'qwertyuiop',
-  database: 'berties_books'
+DB_HOST=localhost
+DB_USER=berties_books_app
+DB_PASSWORD=qwertyuiop
+DB_DATABASE=berties_books
+PORT=8000
 });
 ```
 
-### 4. Run the server
+### 5. Run the server
 
 Start the application by running:
 
@@ -73,7 +73,7 @@ Start the application by running:
 node index.js
 ```
 
-### 5. Open your browser
+### 6. Open your browser
 
 Visit the following URL to view the app:
 
