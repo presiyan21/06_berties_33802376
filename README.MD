@@ -13,7 +13,9 @@ Users can view all books, search for titles, add new books, and see bargain book
 - **Express** – web framework used to handle routes and serve pages  
 - **MySQL** – relational database for storing books and user data  
 - **mysql2** – Node.js library used to connect Express with MySQL  
-- **path** – built-in Node module to handle file paths  
+- **path** – built-in Node module to handle file paths
+- **bcrypt** – used for hashing user passwords securely.
+- **dotenv** – used to secure database credentials outside of source code.
 
 ---
 
@@ -23,7 +25,8 @@ Users can view all books, search for titles, add new books, and see bargain book
 - Add new books to the database through a form  
 - Search for books (exact or partial match)  
 - Display bargain books priced below £20  
-- Register new users (basic registration form)  
+- Register new users (with hashed passwords)
+- Secure User Login** and Audit Logging
 - Dynamic templates rendered with EJS  
 
 ---
