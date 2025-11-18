@@ -31,6 +31,20 @@ Users can view all books, search for titles, add new books, and see bargain book
 
 ---
 
+### Dotenv 
+To keep sensitive database settings out of the source code, the app now uses the **dotenv** module.  
+It’s loaded at the top of `index.js`, and all connection details were moved into a `.env` file.  
+The app now reads these values using `process.env` instead of hardcoded credentials.
+
+---
+
+### Audit Logging 
+A login audit system was added to record both successful and failed login attempts.  
+A new `audit_log` table stores each attempt with the username, result, and timestamp.  
+A helper function in `routes/users.js` writes entries to the table, and the login route logs an attempt after every authentication check.  
+A new `/users/audit` route was added to display the full login history, with the most recent entries first.
+
+
 ## How to Install and Run Locally
 
 1. **Clone the repository**
