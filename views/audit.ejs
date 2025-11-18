@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login Audit Log | <%=shopData.shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1>Login Audit History</h1>
+    <p>Displays all recorded successful and failed login attempts.</p>
+    
+    <% if (auditRecords.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Status</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% auditRecords.forEach(function(record){ %>
+            <tr>
+              <td><%= record.id %></td>
+              <td><%= record.username %></td>
+              <!-- Style the status based on success/failure -->
+              <td style="color: <%= record.status === 'SUCCESS' ? 'green' : 'red' %>;">
+                <strong><%= record.status %></strong>
+              </td>
+              <td><%= record.time %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>The audit log is currently empty.</p>
+    <% } %>
+
+  </body>
+</html>
