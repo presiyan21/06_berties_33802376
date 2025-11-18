@@ -13,7 +13,9 @@ Users can view all books, search for titles, add new books, and see bargain book
 - **Express** – web framework used to handle routes and serve pages  
 - **MySQL** – relational database for storing books and user data  
 - **mysql2** – Node.js library used to connect Express with MySQL  
-- **path** – built-in Node module to handle file paths  
+- **path** – built-in Node module to handle file paths
+- **bcrypt** – used for hashing user passwords securely.
+- **dotenv** – used to secure database credentials outside of source code.
 
 ---
 
@@ -23,46 +25,60 @@ Users can view all books, search for titles, add new books, and see bargain book
 - Add new books to the database through a form  
 - Search for books (exact or partial match)  
 - Display bargain books priced below £20  
-- Register new users (basic registration form)  
+- Register new users (with hashed passwords)
+- Secure User Login** and Audit Logging
 - Dynamic templates rendered with EJS  
 
 ---
+
+### Dotenv 
+To keep sensitive database settings out of the source code, the app now uses the **dotenv** module.  
+It’s loaded at the top of `index.js`, and all connection details were moved into a `.env` file.  
+The app now reads these values using `process.env` instead of hardcoded credentials.
+
+---
+
+### Audit Logging 
+A login audit system was added to record both successful and failed login attempts.  
+A new `audit_log` table stores each attempt with the username, result, and timestamp.  
+A helper function in `routes/users.js` writes entries to the table, and the login route logs an attempt after every authentication check.  
+A new `/users/audit` route was added to display the full login history, with the most recent entries first.
+
 
 ## How to Install and Run Locally
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/lewfer/gs-dwa-berties-books-initial-code berties-books
-   cd berties-books
+   git clone https://github.com/presiyan21/06_berties_33802376
 ## Installation and Setup
 
-### 1. Install dependencies
+### 2. Install dependencies
 ```bash
 npm install
 ```
 
-### 2. Set up MySQL
+### 3. Set up Database and Test Data
 
-Open MySQL and create the database using the provided SQL scripts:
+Open your MySQL client and create the database, including the user and book data, and the final marking user:
 
 ```sql
 SOURCE create_db.sql;
 SOURCE insert_test_data.sql;
 ```
-### 3. Configure database connection
+### 4. Configure database connection
 
-Ensure the database connection in `index.js` matches your MySQL credentials:
+Create a file named .env and add the following content:
 
 ```js
-const db = mysql.createPool({
-  host: 'localhost',
-  user: 'berties_books_app',
-  password: 'qwertyuiop',
-  database: 'berties_books'
+DB_HOST=localhost
+DB_USER=berties_books_app
+DB_PASSWORD=qwertyuiop
+DB_DATABASE=berties_books
+PORT=8000
 });
 ```
 
-### 4. Run the server
+### 5. Run the server
 
 Start the application by running:
 
@@ -70,7 +86,7 @@ Start the application by running:
 node index.js
 ```
 
-### 5. Open your browser
+### 6. Open your browser
 
 Visit the following URL to view the app:
 
