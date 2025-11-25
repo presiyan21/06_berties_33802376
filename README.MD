@@ -61,11 +61,11 @@ A new `/users/audit` route was added to display the full login history, with the
 ### 🧹 Input Sanitisation
 To prevent XSS attacks, certain fields are sanitised using `express-sanitizer`:
 
-**Sanitized fields:**  
+**Sanitised fields:**  
 - User registration: `first name`, `last name`, `username`, `email`  
 - Book management: `book name`  
 
-**Not sanitized:**  
+**Not sanitised:**  
 - Passwords (stored hashed)  
 - Book price (numeric)  
 - Search keywords  
