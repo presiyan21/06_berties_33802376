@@ -1,19 +1,79 @@
 <!doctype html>
 <html>
   <head>
-    <title>Register for <%=shopData.shopName%></title>
-    <link rel="stylesheet"  type="text/css" href="/main.css" />
+    <title>Register for <%= shopData.shopName %></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
   </head>
   <body>
-    <h1>Register for <%=shopData.shopName%></h1>
+    <h1>Register for <%= shopData.shopName %></h1>
+
+    <!-- Display validation errors -->
+    <% if (errors && errors.length > 0) { %>
+      <div class="error-box">
+        <h3>There were some problems with your submission:</h3>
+        <ul>
+          <% errors.forEach(function(error) { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+
     <form method="POST" action="registered">
-        <p>First name: <input id="first" type="text" name="first" /></p>
-        <p>Last name: <input id="last" type="text" name="last" /></p>
-        <p>Email: <input id="email" type="email" name="email" /></p>
-        
-        <p>Username: <input id="username" type="text" name="username" required/></p>
-        <p>Password: <input id="password" type="password" name="password" required/></p>
-        <input type="submit" value="Register" />
-      </form>
+
+      <p>
+        First name:
+        <input
+          id="first"
+          type="text"
+          name="first"
+          value="<%= formData.first || '' %>"
+        />
+      </p>
+
+      <p>
+        Last name:
+        <input
+          id="last"
+          type="text"
+          name="last"
+          value="<%= formData.last || '' %>"
+        />
+      </p>
+
+      <p>
+        Email:
+        <input
+          id="email"
+          type="email"
+          name="email"
+          value="<%= formData.email || '' %>"
+        />
+      </p>
+
+      <p>
+        Username:
+        <input
+          id="username"
+          type="text"
+          name="username"
+          required
+          value="<%= formData.username || '' %>"
+        />
+      </p>
+
+      <p>
+        Password:
+        <input
+          id="password"
+          type="password"
+          name="password"
+          required
+        />
+      </p>
+
+      <input type="submit" value="Register" />
+    </form>
   </body>
 </html>
+

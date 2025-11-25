@@ -6,11 +6,42 @@
   </head>
   <body>
     <h1>Add a Book to <%= shopData.shopName %></h1>
+
+    <!-- Display any validation/sanitisation errors -->
+    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+      <div class="error-box">
+        <h3>There were some problems with your submission:</h3>
+        <ul>
+          <% errors.forEach(function(error) { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+
     <form method="POST" action="/books/bookadded">
-      <p>Book name: <input type="text" name="name" required /></p>
-      <p>Price: <input type="number" step="0.01" name="price" required /></p>
+      <p>
+        Book name: 
+        <input
+          type="text"
+          name="name"
+          required
+          value="<%= typeof formData !== 'undefined' ? formData.name : '' %>"
+        />
+      </p>
+      <p>
+        Price: 
+        <input
+          type="number"
+          step="0.01"
+          name="price"
+          required
+          value="<%= typeof formData !== 'undefined' ? formData.price : '' %>"
+        />
+      </p>
       <input type="submit" value="Add Book" />
     </form>
+
     <p><a href="/books/list">Back to book list</a></p>
   </body>
 </html>
