@@ -44,6 +44,35 @@ A new `audit_log` table stores each attempt with the username, result, and times
 A helper function in `routes/users.js` writes entries to the table, and the login route logs an attempt after every authentication check.  
 A new `/users/audit` route was added to display the full login history, with the most recent entries first.
 
+## Routes
+
+### 🔒 Protected Routes (require login)
+- `/users/list` — user list is private  
+- `/users/audit` — sensitive login information  
+- `/books/addbook` — only logged-in users can add books  
+- `/books/bookadded` — form submission for adding books  
+- `/logout` — only appears when logged in  
+
+### 🌐 Public Routes
+- Homepage, About page  
+- Login and Register pages  
+- Book list, bargain books, search pages  
+
+### 🧹 Input Sanitisation
+To prevent XSS attacks, certain fields are sanitised using `express-sanitizer`:
+
+**Sanitised fields:**  
+- User registration: `first name`, `last name`, `username`, `email`  
+- Book management: `book name`  
+
+**Not sanitised:**  
+- Passwords (stored hashed)  
+- Book price (numeric)  
+- Search keywords  
+
+**Example:**  
+Entering `<script>alert("XSS")</script>` in a sanitised field will be removed or escaped so it doesn’t run in the browser or get saved unsafely.
+
 
 ## How to Install and Run Locally
 
