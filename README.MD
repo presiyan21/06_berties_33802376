@@ -73,7 +73,7 @@ To prevent XSS attacks, certain fields are sanitised using `express-sanitizer`:
 **Example:**  
 Entering `<script>alert("XSS")</script>` in a sanitised field will be removed or escaped so it doesn’t run in the browser or get saved unsafely.
 
-## API - Berties Books
+## API 
 
 ### GET /api/books
 Returns a JSON list of books.
