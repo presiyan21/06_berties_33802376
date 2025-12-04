@@ -73,6 +73,24 @@ To prevent XSS attacks, certain fields are sanitised using `express-sanitizer`:
 **Example:**  
 Entering `<script>alert("XSS")</script>` in a sanitised field will be removed or escaped so it doesn’t run in the browser or get saved unsafely.
 
+## API - Berties Books
+
+### GET /api/books
+Returns a JSON list of books.
+
+Query parameters:
+- `search` — substring search on the book `name`. Example: `?search=world`
+- `minprice` — minimum price (inclusive). Example: `?minprice=5`
+- `maxprice` — maximum price (inclusive). Example: `?maxprice=10`
+- `sort` — sort by `name` or `price`. Example: `?sort=name`
+
+Examples:
+- `GET /api/books` — returns all books
+- `GET /api/books?search=history&minprice=2&maxprice=12&sort=price` — filtered and sorted result
+
+Response:
+- `200 OK` — JSON array of book objects: `[ { "id": 1, "name": "...", "price": 9.99 }, ... ]`
+- `500` on server/database error (body includes an `error` message)
 
 ## How to Install and Run Locally
 
@@ -86,28 +104,7 @@ Entering `<script>alert("XSS")</script>` in a sanitised field will be removed or
 npm install
 ```
 
-### 3. Set up Database and Test Data
-
-Open your MySQL client and create the database, including the user and book data, and the final marking user:
-
-```sql
-SOURCE create_db.sql;
-SOURCE insert_test_data.sql;
-```
-### 4. Configure database connection
-
-Create a file named .env and add the following content:
-
-```js
-DB_HOST=localhost
-DB_USER=berties_books_app
-DB_PASSWORD=qwertyuiop
-DB_DATABASE=berties_books
-PORT=8000
-});
-```
-
-### 5. Run the server
+### 3. Run the server
 
 Start the application by running:
 
@@ -115,7 +112,7 @@ Start the application by running:
 node index.js
 ```
 
-### 6. Open your browser
+### 4. Open your browser
 
 Visit the following URL to view the app:
 
